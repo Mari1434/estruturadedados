@@ -13,7 +13,7 @@ function linkedList() {
         if (head === null) {
             head = node;
         } else {
-            current = node;
+            current = head;
             while (current.next) {
                 current = current.next;
             }
@@ -24,7 +24,7 @@ function linkedList() {
 
     this.insert = function(position, element) {
         if (position >= 0 && position <= length) {
-            let node = new Node(element);
+        let node = new Node(element),
             current = head,
             previous;
 
@@ -109,7 +109,7 @@ function linkedList() {
         let current = head,
         string = '';
         while(current) {
-            string += current.element + (current.next ? '->' : ' ');
+            string += current.element + (current.next ? ' -> ' : ' ');
             current = current.next;
         }
         return string;
@@ -119,3 +119,53 @@ function linkedList() {
         console.log(this.toString());
     };
 }
+
+let listaEncadeada = new linkedList();
+
+listaEncadeada.append("Mariana");
+listaEncadeada.append("Jean");
+listaEncadeada.append("Airton");
+listaEncadeada.append("Pedro");
+listaEncadeada.append("Fábio");
+
+console.log(`A lista está vazia? ${listaEncadeada.isEmpty()}`);
+console.log(`A lista contém ${listaEncadeada.size()} elementos.`);
+console.log(`A lista contém os elementos: ${listaEncadeada.toString()}`);
+
+listaEncadeada.insert(3,'David');
+console.log(`Agora a lista contém os elementos: ${listaEncadeada.toString()}`);
+
+listaEncadeada.insert(0, 'Arthur');
+listaEncadeada.insert(0, 'Daniel');
+listaEncadeada.insert(2, 'Maria Clara');
+console.log(`Agora a lista contém os elementos: ${listaEncadeada.toString()}`);
+
+listaEncadeada.remove('Fábio');
+console.log(`Agora a lista sem o Fábio: ${listaEncadeada.toString()}`);
+
+listaEncadeada.remove('Pedro');
+console.log(`Agora a lista sem o Pedro: ${listaEncadeada.toString()}`);
+
+listaEncadeada.remove('David');
+console.log(`Agora a lista sem o David: ${listaEncadeada.toString()}`);
+
+listaEncadeada.remove('Daniel');
+console.log(`Agora a lista sem o Daniel: ${listaEncadeada.toString()}`);
+
+listaEncadeada.removeAt(2);
+console.log(`Agora a lista removendo Mariana que é o terceiro elemento: ${listaEncadeada.toString()}`);
+
+console.log(`Qual o primeiro elemento da lista? ${listaEncadeada.getHead().element}`);
+
+console.log(`A lista está vazia? ${listaEncadeada.isEmpty()}`);
+console.log(`A lista contém ${listaEncadeada.size()} elementos.`);
+
+console.log('E se eu remover todos esses elementos?');
+
+listaEncadeada.remove('Arthur');
+listaEncadeada.remove('Maria Clara');
+listaEncadeada.remove('Jean');
+listaEncadeada.remove('Airton');
+
+console.log(`A lista está vazia? ${listaEncadeada.isEmpty()}`);
+console.log(`A lista contém ${listaEncadeada.size()} elementos.`);
